@@ -32,6 +32,12 @@ $ExcelWorkSheet.Columns.Item(1).Rows.Item($counter) = $computer.PSComputerName
 $ExcelWorkSheet.Columns.Item(2).Rows.Item($counter) = $computer.Status
 $counter++
 }
+
+$pwd = Get-Location
+$date = Get-Date -Format "yyyyMMddHHmmss"
+$fileName = "$($pwd)\Server_report_$date.xlsx" 
+Write-Host $fileName
+
 # Save the report and close Excel:
-$ExcelWorkBook.SaveAs('D:\Sample_Applications\powershell\Server_report.xlsx')
+$ExcelWorkBook.SaveAs("$fileName")
 $ExcelWorkBook.close($true)
